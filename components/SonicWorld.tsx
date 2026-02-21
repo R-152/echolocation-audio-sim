@@ -264,7 +264,7 @@ export default function SonicWorld() {
   const emitterNodesRef = useRef<Map<string, EmitterAudioNode>>(new Map());
 
   const selectedEmitter = useMemo(
-    () => emitters.find((emitter) => emitter.id === selectedEmitterId) ?? null,
+    () => emitters.find((emitter) => emitter.id === selectedEmitterId) ?? emitters[0] ?? null,
     [emitters, selectedEmitterId]
   );
 
@@ -740,15 +740,12 @@ export default function SonicWorld() {
     setListenerAudioPose(context, listener);
   }, [audioRunning, listener, setListenerAudioPose]);
 
-  useEffect(() => {
-    if (emitters.length === 0) {
-      setSelectedEmitterId(null);
-      return;
+  const disposeAllEmitterNodes = useCallback(() => {
+    for (const node of emitterNodesRef.current.values()) {
+      disposeEmitterNode(node);
     }
-    if (!selectedEmitterId || !emitters.some((emitter) => emitter.id === selectedEmitterId)) {
-      setSelectedEmitterId(emitters[0].id);
-    }
-  }, [emitters, selectedEmitterId]);
+    emitterNodesRef.current.clear();
+  }, []);
 
   useEffect(() => {
     const trackedKeys = new Set(["w", "a", "s", "d", "q", "e", "arrowleft", "arrowright"]);
@@ -870,15 +867,12 @@ export default function SonicWorld() {
 
   useEffect(() => {
     return () => {
-      for (const node of emitterNodesRef.current.values()) {
-        disposeEmitterNode(node);
-      }
-      emitterNodesRef.current.clear();
+      disposeAllEmitterNodes();
       if (audioContextRef.current) {
         void audioContextRef.current.close();
       }
     };
-  }, []);
+  }, [disposeAllEmitterNodes]);
 
   const pointerToCanvas = (event: ReactPointerEvent<HTMLCanvasElement>) => {
     const canvas = event.currentTarget;
