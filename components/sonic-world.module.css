@@ -1,0 +1,230 @@
+.wrap {
+  display: grid;
+  gap: 1rem;
+  animation: riseIn 500ms ease both;
+}
+
+.topRow {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.worldGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.45fr 1fr;
+}
+
+.card {
+  border-radius: 16px;
+  border: 1px solid #bfd8df;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 18px 28px -24px rgba(9, 65, 76, 0.44);
+  padding: 0.9rem;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.04rem;
+}
+
+.subtle {
+  margin: 0.45rem 0 0.7rem;
+  color: #48666e;
+  font-size: 0.87rem;
+}
+
+.status {
+  margin: 0.55rem 0 0;
+  font-size: 0.88rem;
+  color: #35565f;
+}
+
+.inlineGrid {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.field {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.field span {
+  color: #3f6169;
+  font-size: 0.84rem;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  border: 1px solid #c1d8df;
+  border-radius: 10px;
+  padding: 0.5rem 0.55rem;
+  background: #ffffff;
+}
+
+.field input[type="range"] {
+  padding: 0;
+  accent-color: #0b7d72;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.primaryButton,
+.secondaryButton,
+.dangerButton {
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 650;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.dangerButton:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.primaryButton {
+  color: #fff;
+  background: linear-gradient(120deg, #0d8076, #21968b);
+  padding: 0.54rem 0.92rem;
+}
+
+.secondaryButton {
+  color: #14383f;
+  background: linear-gradient(120deg, #edf7f9, #f9fcff);
+  border: 1px solid #bdd6dd;
+  padding: 0.5rem 0.86rem;
+}
+
+.dangerButton {
+  color: #772c10;
+  background: #fff0e8;
+  border: 1px solid #e9c2b2;
+  padding: 0.45rem 0.74rem;
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled,
+.dangerButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.toggleGrid {
+  margin-top: 0.6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  color: #3f626a;
+}
+
+.toggleGrid label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.86rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.21rem 0.48rem;
+  border-radius: 999px;
+  background: #ebf6f8;
+  border: 1px solid #c2dce3;
+  color: #285059;
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.canvas {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid #b8d2dc;
+  touch-action: none;
+  background: radial-gradient(80% 80% at 50% 44%, #fffdf8 0%, #f3fbff 65%, #eaf3f8 100%);
+}
+
+.coordRow {
+  margin-top: 0.56rem;
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.emitterList {
+  display: grid;
+  gap: 0.5rem;
+  max-height: 15rem;
+  overflow: auto;
+  padding-right: 0.2rem;
+}
+
+.emitterCard {
+  text-align: left;
+  width: 100%;
+  border: 1px solid #c6dce1;
+  border-radius: 11px;
+  background: linear-gradient(120deg, #ffffff, #f7fbfd);
+  padding: 0.54rem 0.6rem;
+  cursor: pointer;
+}
+
+.emitterCard p {
+  margin: 0;
+  font-weight: 700;
+  color: #1a434b;
+}
+
+.emitterCard small {
+  color: #4f6d74;
+}
+
+.activeEmitter {
+  border-color: #0e7e73;
+  box-shadow: 0 0 0 2px rgba(14, 126, 115, 0.18);
+}
+
+.editor {
+  margin-top: 0.8rem;
+  border-top: 1px dashed #bfd8df;
+  padding-top: 0.75rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+@media (max-width: 980px) {
+  .topRow,
+  .worldGrid,
+  .inlineGrid,
+  .toggleGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(13px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

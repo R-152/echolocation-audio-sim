@@ -1,0 +1,80 @@
+:root {
+  color-scheme: light;
+  --bg-a: #f4fbff;
+  --bg-b: #d8efe8;
+  --bg-c: #ffe7cb;
+  --ink: #0f272d;
+  --ink-soft: #35545b;
+  --panel: rgba(255, 255, 255, 0.84);
+  --line: #c1d8df;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Avenir Next", "Segoe UI", "Trebuchet MS", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(70rem 42rem at 5% -15%, var(--bg-b) 0%, transparent 58%),
+    radial-gradient(70rem 38rem at 95% -20%, var(--bg-c) 0%, transparent 52%),
+    linear-gradient(180deg, #fbfdff 0%, var(--bg-a) 55%, #edf7fb 100%);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.page-shell {
+  width: min(1180px, 100%);
+  padding: 1.2rem clamp(0.9rem, 2.2vw, 2rem) 2rem;
+}
+
+.intro-card {
+  margin-bottom: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 18px 32px -26px rgba(16, 57, 66, 0.42);
+  animation: riseIn 450ms ease both;
+}
+
+.intro-tag {
+  margin: 0 0 0.3rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #0e746d;
+}
+
+h1 {
+  margin: 0;
+  line-height: 1.06;
+  font-size: clamp(1.35rem, 2.8vw, 2.05rem);
+}
+
+.intro-card p {
+  margin: 0.55rem 0 0;
+  color: var(--ink-soft);
+  max-width: 76ch;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

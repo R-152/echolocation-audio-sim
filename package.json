@@ -1,0 +1,23 @@
+{
+  "name": "echolocation-audio-sim",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Next.js TypeScript app that simulates movable 3D audio objects for earbuds",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "latest"
+  }
+}
